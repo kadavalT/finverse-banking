@@ -36,6 +36,15 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
+	@Column(unique = true)
+	private String phone;
+
+	@Column(unique = true)
+	private String pan;
+
+	@Column(unique = true)
+	private String aadhaar;
+
 	public String getUsername() {
 		return username;
 	}
@@ -66,5 +75,29 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPan() {
+		return pan;
+	}
+
+	public void setPan(String pan) {
+		this.pan = pan;
+	}
+
+	public String getAadhaar() {
+		return aadhaar;
+	}
+
+	public void setAadhaar(String aadhaar) {
+		this.aadhaar = aadhaar;
 	}
 }

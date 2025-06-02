@@ -29,6 +29,15 @@ public class RegisterRequest {
 
 	private Role role;
 
+	@Pattern(regexp = "\\d{10}", message = "Invalid phone number")
+	private String phone;
+
+	@Pattern(regexp = "[A-Z]{5}[0-9]{4}[A-Z]{1}", message = "Invalid PAN format")
+	private String pan;
+
+	@Pattern(regexp = "\\d{12}", message = "Invalid Aadhaar number")
+	private String aadhaar;
+
 	public String getUsername() {
 		return username;
 	}
@@ -59,6 +68,30 @@ public class RegisterRequest {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPan() {
+		return pan;
+	}
+
+	public void setPan(String pan) {
+		this.pan = pan;
+	}
+
+	public String getAadhaar() {
+		return aadhaar;
+	}
+
+	public void setAadhaar(String aadhaar) {
+		this.aadhaar = aadhaar;
 	}
 
 }

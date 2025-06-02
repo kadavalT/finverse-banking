@@ -41,6 +41,8 @@ public class AuthService {
 			throw new AuthServiceException("Email is already registered.");
 		}
 
+		validateAadhaar(request.getAadhaar());
+
 		User user = new User();
 		user.setUsername(request.getUsername());
 		user.setEmail(request.getEmail());
@@ -48,6 +50,9 @@ public class AuthService {
 		logger.debug("Password encrypted for email: {}", request.getEmail());
 
 		user.setRole(request.getRole());
+		user.setPhone(request.getPhone());
+		user.setPan(request.getPan());
+		user.setAadhaar(request.getAadhaar());
 
 		userRepository.save(user);
 
@@ -75,4 +80,11 @@ public class AuthService {
 		return jwtUtil.generateToken(userDetails);
 
 	}
+
+	private void validateAadhaar(String aadhaar) {
+		if (aadhaar == null || !aadhaar.matches("\\d{12}")) {
+			throw new IllegalArgumentException("Invalid Aadhaar number. Must be exactly 12 digits.");
+		}
+	}
+
 }
